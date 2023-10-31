@@ -11,9 +11,9 @@ def password_frontend():
 
 @app.route("/check_password",methods=['POST'])
 def check_password():
-	password = requests.form.get('password')
+	password = requests.get('password')
 	count = pwned_api_check(password)
-	print(count)
+
 	if count:
 		result = f'{password} was found {count} times... you should change your password'
 	else:
@@ -39,7 +39,6 @@ def pwned_api_check(password):
 	sha1password = hashlib.sha1(password.encode('utf-8')).hexdigest().upper()
 	first_5letters, tail = sha1password[:5], sha1password[5:]
 	response = request_api_data(first_5letters)
-	# print(first_5letters,tail)
 	return get_password_leaks_count(response,tail)
 
 
