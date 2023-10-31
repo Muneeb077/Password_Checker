@@ -1,0 +1,75 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to right, #D22B2B, #191970); /* Set the background gradient */
+}
+.container {
+    max-width: 300px;
+    margin: 0 auto;
+    padding: 100px;
+    border-radius: 20px;
+    background-color: black; /* Set the background color to black */
+    color: grey; /* Set the text color to black */
+    text-align: center;
+    align-items: center;
+    height:40vh;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+
+label {
+    display: block;
+    margin: 10px 0;
+    color: grey; /* Set the text color to grey */
+}
+
+input {
+    width: 90%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 2px solid blue; /* Set the border color to blue */
+    border-radius: 30px;
+    color: white;
+    background: transparent
+}
+
+button {
+    margin-top: 20px;
+    width: 25%;
+    padding: 12px;
+    background: transparent;
+    color: grey;
+    border: 2px solid green;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: transparent;
+}
+
+#result-container {
+    margin-top: 20px;
+    padding: 10px;
+    border: 2px solid blue; /* Set the border color to green */
+    border-radius: 20px;
+    background-color: Transparent; /* Set the background color to a light green */
+    text-align: center;
+    color: grey; /* Set the text color to green */
+}
+
+#result {
+    margin: 0;
+}
