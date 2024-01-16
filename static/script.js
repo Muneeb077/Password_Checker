@@ -11,9 +11,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const password = passwordInput.value;
 
         const response = await fetch(`/check_password?password=${password}`);
-        const data = await response.text();  // Change this line
-
-        if (data.includes('found')) {  // Update this condition
+        const data = await response.text();
+        
+        if (data.includes('found')) {
             resultText.innerText = `${password} was found. You should change your password.`;
         } else {
             resultText.innerText = `${password} was NOT found. Carry on!`;
