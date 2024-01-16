@@ -9,7 +9,7 @@ def password_frontend():
 	return render_template('Password.html')
 
 
-@app.route("/check_password",methods=['POST'])
+@app.route("/check_password",methods=['GET', 'POST'])
 def check_password():
 	password = requests.get('password')
 	count = pwned_api_check(password)
