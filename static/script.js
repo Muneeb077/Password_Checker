@@ -15,7 +15,8 @@ document.addEventListener('DOMContentLoaded', function() {
         
         if (data.includes('found')) {
             resultText.innerText = `${password} was found. You should change your password.`;
-        } else {
+        }
+        else {
             resultText.innerText = `${password} was NOT found. Carry on!`;
         }
     });
