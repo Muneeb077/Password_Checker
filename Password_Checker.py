@@ -1,6 +1,6 @@
 import requests
 import hashlib
-from flask import Flask, render_template
+from flask import Flask, render_template,request, jsonify
 
 app = Flask(__name__)
 
@@ -8,17 +8,18 @@ app = Flask(__name__)
 def password_frontend():
 	return render_template('Password.html')
 
-@app.route("/check_password",methods=['GET', 'POST'])
+@app.route("/check_password", methods=['GET', 'POST'])
 def check_password():
-	password = requests.get('password')
+    # Retrieve password from query parameter for GET request
+	password = request.args.get('password')
 	count = pwned_api_check(password)
 
 	if count:
-		result = f'{password} was found {count} times... you should change your password'
+		result = {'message': f'{password} was found {count} times... you should change your password', 'count': count}
 	else:
-		result = f'{password} was NOT found.'
-	print(result)
-	return render_template('Password.html', result=result)
+		result = {'message': f'{password} was NOT found.', 'count': 0}
+	return jsonify(result)
+
 
 def request_api_data(query_char):
 	url = 'https://api.pwnedpasswords.com/range/' + query_char

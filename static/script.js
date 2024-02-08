@@ -10,13 +10,12 @@ document.addEventListener('DOMContentLoaded', function() {
         const passwordInput = document.getElementById('password');
         const password = passwordInput.value;
 
-        const response = await fetch(`/check_password?password=${password}`);
-        const data = await response.text();
-        
-        if (data.includes('found')) {
-            resultText.innerText = `${password} was found. You should change your password.`;
-        }
-        else {
+        const response = await fetch(`/check_password?password=${encodeURIComponent(password)}`);
+        const data = await response.json();
+
+        if (data.count > 0) {
+            resultText.innerText = `${password} was found ${data.count} times. You should change your password.`;
+        } else {
             resultText.innerText = `${password} was NOT found. Carry on!`;
         }
     });
